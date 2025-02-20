@@ -1,4 +1,4 @@
-{
+export const Data = {
     "2024-10-01": {
         "regions": [
             "Taiwan",

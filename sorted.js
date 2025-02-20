@@ -1,4 +1,4 @@
-{
+export const DataSpheres = {
     "2024-10-01": {
         "regions": {
             "Taiwan": [

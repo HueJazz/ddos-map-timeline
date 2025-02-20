@@ -1,9 +1,12 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    let response = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/requests_map.json');
-    let rawData = await response.json();
+import { Data } from './requests_map.js'
+import { DataSpheres } from './sorted.js'
 
-    let responseSpheres = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/sorted.json');
-    let rawDataSpheres = await responseSpheres.json();
+document.addEventListener("DOMContentLoaded", async function () {
+    // let response = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/requests_map.json');
+    // let Data = await response.json();
+
+    // let responseSpheres = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/sorted.json');
+    // let DataSpheres = await responseSpheres.json();
 
     let startDate = new Date('2024-10-01');
     let endDate = new Date('2025-02-15');
@@ -46,10 +49,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     function getSpheresForCountry(country, currentEndDate) {
         let sphereCounts = {};
 
-        for (let date in rawDataSpheres) {
+        for (let date in DataSpheres) {
             let currentDate = new Date(date);
             if (currentDate <= currentEndDate) {
-                let regions = rawDataSpheres[date].regions;
+                let regions = DataSpheres[date].regions;
                 if (regions[country]) {
                     regions[country].forEach(sphere => {
                         sphereCounts[sphere] = (sphereCounts[sphere] || 0) + 1;
@@ -64,10 +67,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     function getDataForPeriod(start, end) {
         let periodCounts = {};
 
-        for (let date in rawData) {
+        for (let date in Data) {
             let currentDate = new Date(date);
             if (currentDate >= start && currentDate <= end) {
-                rawData[date].regions.forEach(country => {
+                Data[date].regions.forEach(country => {
                     if (europeanCountries.includes(country)) {
                         periodCounts[country] = (periodCounts[country] || 0) + 1;
                     }
