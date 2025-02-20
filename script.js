@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    let response = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline.git/main/requests_map.json');
+    let response = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/requests_map.json');
     let rawData = await response.json();
 
-    let responseSpheres = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline.git/main/sorted.json');
+    let responseSpheres = await fetch('https://raw.githubusercontent.com/HueJazz/ddos-map-timeline/main/sorted.json');
     let rawDataSpheres = await responseSpheres.json();
 
     let startDate = new Date('2024-10-01');
